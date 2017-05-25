@@ -95,7 +95,7 @@ abstract class BaseConsumerCommand extends BaseRabbitMqCommand
         $this->consumer = $this->getContainer()
                 ->get(sprintf($this->getConsumerService(), $input->getArgument('name')));
 
-        if (!is_null($input->getOption('memory-limit')) && ctype_digit((string) $input->getOption('memory-limit')) && $input->getOption('memory-limit') > 0) {
+        if (!is_null($input->getOption('memory-limit'))) {
             $this->consumer->setMemoryLimit($input->getOption('memory-limit'));
         }
         $this->consumer->setRoutingKey($input->getOption('route'));
